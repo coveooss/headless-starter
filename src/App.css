@@ -14,10 +14,35 @@ h1 {
 
 .App-header {
   background-color: #333357;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.App-body {
+  background-color: #333357;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+.main-section {
+  display: flex;
+}
+
+.facet-section {
+  width: 20vw;
+}
+
+.results-section {
+  width: 80vw;
+}
+
+.sort-div, .pager-div {
+  float: right;
+  margin-right: 5vw;
 }
