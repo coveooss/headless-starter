@@ -1,4 +1,4 @@
-# Coveo Headless Starter Project
+# Coveo Headless React Starter Project
 
 This project serves as a starting point for the Coveo Headless Tutorial (**coming soon!**).
 
@@ -8,7 +8,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Available Scripts
 
-In the project directory, you can run:
+After running `npm install` in the project directory, you can run:
 
 #### `npm start`
 
