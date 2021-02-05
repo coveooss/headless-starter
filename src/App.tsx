@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { SearchBox } from './components/search-box';
 import { AnalyticsActions, buildDateSortCriterion, buildFacet, buildFieldSortCriterion, buildPager, buildRelevanceSortCriterion, buildResultList, buildSearchBox, buildSort, SearchActions, SortCriterion, SortOrder } from '@coveo/headless';
@@ -38,15 +37,15 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1><img src={logo} className="App-logo" alt="logo" />Coveo Headless Search Interface</h1>
+        <h1>Coveo Headless Search Interface</h1>
       </header>
       <div className="App-body">
-        <SearchBox controller={searchBox} />
+        <div className="search-section"><SearchBox controller={searchBox} /></div>
         <div className="main-section">
-          <div className="facet-section">
+          <div className="facet-section column">
             <Facet controller={facet} title="Source"/>
           </div>
-          <div className="results-section">
+          <div className="results-section column">
             <div className='sort-div'><Sort controller={sort} criteria={criteria} /></div>
             <ResultList controller={resultList} />
             <div className='pager-div'><Pager controller={pager} /></div>
