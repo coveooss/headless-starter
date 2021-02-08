@@ -46,9 +46,9 @@ function App() {
             <Facet controller={facet} title="Source"/>
           </div>
           <div className="results-section column">
-            <div className='sort-div'><Sort controller={sort} criteria={criteria} /></div>
+            <Sort controller={sort} criteria={criteria} />
             <ResultList controller={resultList} />
-            <div className='pager-div'><Pager controller={pager} /></div>
+            <Pager controller={pager} />
           </div>
         </div>
       </div>

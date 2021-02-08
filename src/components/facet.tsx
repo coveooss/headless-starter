@@ -24,7 +24,7 @@ export const Facet: FunctionComponent<FacetProps> = (props) => {
   return (
     <div className="facet">
       <h3>{props.title}</h3>
-      <ul style={{textAlign: 'left'}}>
+      <ul>
         {state.values.map((value) => (
           <li key={value.value}>
             <input

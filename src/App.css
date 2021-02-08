@@ -22,3 +22,19 @@
 .results-section {
   width: 50%;
 }
+
+.facet ul {
+  text-align: left;
+}
+
+.sort {
+  display: flex;
+}
+
+.sort p {
+  margin: 0;
+}
+
+.search-box input {
+  min-width: 100%;
+}

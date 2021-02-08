@@ -17,8 +17,8 @@ export const ResultList: FunctionComponent<ResultListProps> = (props) => {
   }
 
   return (
-    <div>
-      <ul style={{textAlign: 'left'}}>
+    <div className="result-list">
+      <ul>
         {state.results.map((result) => (
           <li key={result.uniqueId}>
             <article>

@@ -26,8 +26,8 @@ export const Sort: FunctionComponent<SortProps> = (props) => {
     )!;
 
   return (
-    <div style={{display: 'flex'}}>
-      <p style={{margin: 0}}>Sort by: </p>
+    <div className="sort">
+      <p>Sort by: </p>
       <select
         value={getCurrentCriterion()[0]}
         onChange={(e) =>

@@ -12,7 +12,7 @@ export const Pager: FunctionComponent<PagerProps> = (props) => {
   useEffect(() => controller.subscribe(() => setState(controller.state)), [controller]);
 
   return (
-    <nav>
+    <nav className="pager">
       {state.currentPages.map((page) => (
         <button
           key={page}

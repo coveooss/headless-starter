@@ -13,12 +13,11 @@ export const SearchBox: FunctionComponent<SearchBoxProps> = (props) => {
   useEffect(() => controller.subscribe(() => setState(controller.state)), [controller]);
 
   return (
-    <div style={{minWidth: "50vw"}}>
+    <div className="search-box">
       <input
         value={state.value}
         onChange={(e) => controller.updateText(e.target.value)}
         onKeyDown={(e) => isEnterKey(e) && controller.submit()}
-        style={{minWidth: "100%"}}
       />
     </div>
   );

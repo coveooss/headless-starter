@@ -7,7 +7,7 @@ interface LinkProps {
 
 export const ResultLink: FunctionComponent<LinkProps> = (props) => {
   return (
-    <a href={props.result.clickUri} style={{color: '#00ADFF'}}>
+    <a href={props.result.clickUri} className="result-link">
       {props.children}
     </a>
   );
