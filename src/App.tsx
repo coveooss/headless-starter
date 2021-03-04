@@ -1,32 +1,14 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import { SearchBox } from './components/search-box';
-import { AnalyticsActions, buildDateSortCriterion, buildFacet, buildFieldSortCriterion, buildPager, buildRelevanceSortCriterion, buildResultList, buildSearchBox, buildSort, SearchActions, SortCriterion, SortOrder } from '@coveo/headless';
+import { AnalyticsActions, SearchActions } from '@coveo/headless';
 import { headlessEngine } from './engine';
 import { ResultList } from './components/result-list';
 import { Facet } from './components/facet';
 import { Pager } from './components/pager';
 import { Sort } from './components/sort';
-
-const searchBox = buildSearchBox(headlessEngine);
-
-const resultList = buildResultList(headlessEngine);
-
-const facet = buildFacet(headlessEngine, {options: {field: 'source'}});
-
-const pager = buildPager(headlessEngine);
-
-const criteria: [string, SortCriterion][] = [
-  ['Relevance', buildRelevanceSortCriterion()],
-  ['Date (Ascending)', buildDateSortCriterion(SortOrder.Ascending)],
-  ['Date (Descending)', buildDateSortCriterion(SortOrder.Descending)],
-  ['Size (Ascending)', buildFieldSortCriterion('size', SortOrder.Ascending)],
-  ['Size (Descending)', buildFieldSortCriterion('size', SortOrder.Descending)],
-];
-const initialCriterion = criteria[0][1];
-const sort = buildSort(headlessEngine, {
-  initialState: {criterion: initialCriterion},
-});
+import { facet, pager, resultList, searchBox, sort } from './controllers/controllers';
+import { criteria } from './controllers/sort-criteria';
 
 function App() {
 
