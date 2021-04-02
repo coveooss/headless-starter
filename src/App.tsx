@@ -9,6 +9,7 @@ import { Pager } from './components/pager';
 import { Sort } from './components/sort';
 import { facet, pager, resultList, searchBox, sort } from './controllers/controllers';
 import { criteria } from './controllers/sort-criteria';
+import { resultTemplatesManager } from './controllers/result-templates-manager';
 
 function App() {
 
@@ -29,7 +30,7 @@ function App() {
           </div>
           <div className="results-section column">
             <Sort controller={sort} criteria={criteria} />
-            <ResultList controller={resultList} />
+            <ResultList controller={resultList} resultTemplatesManager={resultTemplatesManager} />
             <Pager controller={pager} />
           </div>
         </div>

@@ -19,6 +19,17 @@ export const SearchBox: FunctionComponent<SearchBoxProps> = (props) => {
         onChange={(e) => controller.updateText(e.target.value)}
         onKeyDown={(e) => isEnterKey(e) && controller.submit()}
       />
+      <ul>
+        {state.suggestions.map((suggestion) => {
+          return (
+            <li
+              key={suggestion.rawValue}
+              onClick={() => controller.selectSuggestion(suggestion.rawValue)}
+              dangerouslySetInnerHTML={{__html: suggestion.highlightedValue}}>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }
