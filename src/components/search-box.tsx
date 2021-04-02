@@ -12,6 +12,10 @@ export const SearchBox: FunctionComponent<SearchBoxProps> = (props) => {
 
   useEffect(() => controller.subscribe(() => setState(controller.state)), [controller]);
 
+  const suggestionStyle = {
+    cursor: 'pointer',
+  }
+
   return (
     <div className="search-box">
       <input
@@ -23,6 +27,7 @@ export const SearchBox: FunctionComponent<SearchBoxProps> = (props) => {
         {state.suggestions.map((suggestion) => {
           return (
             <li
+              style={suggestionStyle}
               key={suggestion.rawValue}
               onClick={() => controller.selectSuggestion(suggestion.rawValue)}
               dangerouslySetInnerHTML={{__html: suggestion.highlightedValue}}>
