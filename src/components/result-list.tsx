@@ -1,6 +1,6 @@
 import {ResultList as HeadlessResultList} from '@coveo/headless'
 import { FunctionComponent, useEffect, useState } from 'react'
-import {ResultLink} from './result-link';
+import {InteractiveResult} from './interactive-result';
 
 interface ResultListProps {
   controller: HeadlessResultList;
@@ -23,7 +23,7 @@ export const ResultList: FunctionComponent<ResultListProps> = (props) => {
           <li key={result.uniqueId}>
             <article>
               <h2>
-                <ResultLink result={result}>{result.title}</ResultLink>
+                <InteractiveResult result={result}>{result.title}</InteractiveResult>
               </h2>
               <p>{result.excerpt}</p>
             </article>
