@@ -1,6 +1,6 @@
 import { ResultTemplatesManager, Result, buildResultTemplatesManager, ResultTemplatesHelpers } from "@coveo/headless";
 import React from "react";
-import { ResultLink } from "../components/result-link";
+import { InteractiveResult } from "../components/interactive-result";
 import { headlessEngine } from "../engine";
 
 export const resultTemplatesManager: ResultTemplatesManager<(result: Result) => JSX.Element> = buildResultTemplatesManager(headlessEngine);
@@ -11,7 +11,7 @@ resultTemplatesManager.registerTemplates({
     <li key={result.uniqueId}>
       <article>
         <h2>
-          <ResultLink result={result}>{result.title}</ResultLink>
+          <InteractiveResult result={result}>{result.title}</InteractiveResult>
         </h2>
         <p>{result.excerpt}</p>
       </article>
@@ -25,7 +25,7 @@ resultTemplatesManager.registerTemplates({
       <article className="youtube-result">
         <div>
           <h2>
-            <ResultLink result={result}>{result.title}</ResultLink>
+            <InteractiveResult result={result}>{result.title}</InteractiveResult>
           </h2>
           <p>{result.excerpt}</p>
         </div>
