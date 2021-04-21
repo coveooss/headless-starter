@@ -1,9 +1,9 @@
 import {
   buildCriterionExpression,
   Sort as HeadlessSort,
-  SortCriterion
+  SortCriterion,
 } from '@coveo/headless';
-import { FunctionComponent, useEffect, useState } from 'react';
+import {FunctionComponent, useEffect, useState} from 'react';
 
 interface SortProps {
   controller: HeadlessSort;
@@ -14,7 +14,9 @@ export const Sort: FunctionComponent<SortProps> = (props) => {
   const {controller} = props;
   const [state, setState] = useState(controller.state);
 
-  useEffect(() => controller.subscribe(() => setState(controller.state)), [controller]);
+  useEffect(() => controller.subscribe(() => setState(controller.state)), [
+    controller,
+  ]);
 
   const getCriterionFromName = (name: string) =>
     props.criteria.find(([criterionName]) => criterionName === name)!;
@@ -42,4 +44,4 @@ export const Sort: FunctionComponent<SortProps> = (props) => {
       </select>
     </div>
   );
-}
+};

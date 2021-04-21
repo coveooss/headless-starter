@@ -1,14 +1,16 @@
-import { buildInteractiveResult, Result } from "@coveo/headless";
-import { FunctionComponent, useEffect } from "react";
-import { headlessEngine } from "../engine";
+import {buildInteractiveResult, Result} from '@coveo/headless';
+import {FunctionComponent, useEffect} from 'react';
+import {headlessEngine} from '../engine';
 
 interface InteractiveResultProps {
   result: Result;
 }
 
-export const InteractiveResult: FunctionComponent<InteractiveResultProps> = (props) => {
+export const InteractiveResult: FunctionComponent<InteractiveResultProps> = (
+  props
+) => {
   const controller = buildInteractiveResult(headlessEngine, {
-    options: {result: props.result}
+    options: {result: props.result},
   });
 
   useEffect(() => () => controller.cancelPendingSelect());
@@ -26,7 +28,7 @@ export const InteractiveResult: FunctionComponent<InteractiveResultProps> = (pro
       {props.children}
     </a>
   );
-}
+};
 
 // Filters out dangerous URIs that can create XSS attacks such as `javascript:`.
 function filterProtocol(uri: string) {

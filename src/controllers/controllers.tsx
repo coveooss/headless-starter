@@ -1,6 +1,12 @@
-import { buildSearchBox, buildResultList, buildFacet, buildPager, buildSort } from "@coveo/headless";
-import { headlessEngine } from "../engine";
-import { criteria } from "./sort-criteria";
+import {
+  buildSearchBox,
+  buildResultList,
+  buildFacet,
+  buildPager,
+  buildSort,
+} from '@coveo/headless';
+import {headlessEngine} from '../engine';
+import {criteria} from './sort-criteria';
 
 export const searchBox = buildSearchBox(headlessEngine);
 

@@ -1,5 +1,5 @@
 import {Pager as HeadlessPager} from '@coveo/headless';
-import { FunctionComponent, useEffect, useState } from 'react';
+import {FunctionComponent, useEffect, useState} from 'react';
 
 interface PagerProps {
   controller: HeadlessPager;
@@ -9,7 +9,9 @@ export const Pager: FunctionComponent<PagerProps> = (props) => {
   const {controller} = props;
   const [state, setState] = useState(controller.state);
 
-  useEffect(() => controller.subscribe(() => setState(controller.state)), [controller]);
+  useEffect(() => controller.subscribe(() => setState(controller.state)), [
+    controller,
+  ]);
 
   return (
     <nav className="pager">
@@ -24,4 +26,4 @@ export const Pager: FunctionComponent<PagerProps> = (props) => {
       ))}
     </nav>
   );
-}
+};

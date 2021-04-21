@@ -1,5 +1,5 @@
 import {Facet as HeadlessFacet} from '@coveo/headless';
-import { FunctionComponent, useEffect, useState } from 'react';
+import {FunctionComponent, useEffect, useState} from 'react';
 
 interface FacetProps {
   controller: HeadlessFacet;
@@ -10,7 +10,9 @@ export const Facet: FunctionComponent<FacetProps> = (props) => {
   const {controller} = props;
   const [state, setState] = useState(controller.state);
 
-  useEffect(() => controller.subscribe(() => setState(controller.state)), [controller]);
+  useEffect(() => controller.subscribe(() => setState(controller.state)), [
+    controller,
+  ]);
 
   if (!state.values.length) {
     return (
@@ -39,4 +41,4 @@ export const Facet: FunctionComponent<FacetProps> = (props) => {
       </ul>
     </div>
   );
-}
+};
