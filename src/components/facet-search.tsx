@@ -1,4 +1,7 @@
-import {FacetSearch as HeadlessFacetSearch, FacetSearchState} from '@coveo/headless';
+import {
+  FacetSearch as HeadlessFacetSearch,
+  FacetSearchState,
+} from '@coveo/headless';
 import {FunctionComponent, useState} from 'react';
 
 export interface FacetSearchProps {
@@ -24,20 +27,22 @@ export const FacetSearch: FunctionComponent<FacetSearchProps> = (props) => {
         value={searchBoxValue}
         onInput={(e) => updateSearch(e.currentTarget.value)}
       />
-      {searchBoxValue !== '' && <ul style={searchResultsStyle}>
-        {props.facetSearchState.values.map((facetSearchValue) => (
-          <li key={facetSearchValue.rawValue}>
-            <button
-              onClick={() => {
-                props.controller.select(facetSearchValue);
-                updateSearch('');
-              }}
-            >
-              {facetSearchValue.displayValue} ({facetSearchValue.count})
-            </button>
-          </li>
-        ))}
-      </ul>}
+      {searchBoxValue !== '' && (
+        <ul style={searchResultsStyle}>
+          {props.facetSearchState.values.map((facetSearchValue) => (
+            <li key={facetSearchValue.rawValue}>
+              <button
+                onClick={() => {
+                  props.controller.select(facetSearchValue);
+                  updateSearch('');
+                }}
+              >
+                {facetSearchValue.displayValue} ({facetSearchValue.count})
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
-}
+};

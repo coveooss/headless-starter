@@ -1,19 +1,27 @@
-import { buildSearchBox, buildResultList, buildFacet, buildPager, buildSort } from "@coveo/headless";
-import { headlessEngine } from "../engine";
-import { criteria } from "./sort-criteria";
+import {
+  buildSearchBox,
+  buildResultList,
+  buildFacet,
+  buildPager,
+  buildSort,
+} from '@coveo/headless';
+import {headlessEngine} from '../engine';
+import {criteria} from './sort-criteria';
 
-export const searchBox = buildSearchBox(headlessEngine, {options: {
-  highlightOptions: {
-    notMatchDelimiters: {
-      open: "<strong>",
-      close: "</strong>"
+export const searchBox = buildSearchBox(headlessEngine, {
+  options: {
+    highlightOptions: {
+      notMatchDelimiters: {
+        open: '<strong>',
+        close: '</strong>',
+      },
+      correctionDelimiters: {
+        open: '<i>',
+        close: '</i>',
+      },
     },
-    correctionDelimiters: {
-      open: "<i>",
-      close: "</i>"
-    }
-  }
-}});
+  },
+});
 
 export const resultList = buildResultList(headlessEngine);
 

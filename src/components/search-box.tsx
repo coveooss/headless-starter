@@ -1,5 +1,5 @@
-import { SearchBox as HeadlessSearchBox } from '@coveo/headless';
-import { FunctionComponent, useEffect, useState } from 'react';
+import {SearchBox as HeadlessSearchBox} from '@coveo/headless';
+import {FunctionComponent, useEffect, useState} from 'react';
 
 interface SearchBoxProps {
   controller: HeadlessSearchBox;
@@ -8,20 +8,21 @@ interface SearchBoxProps {
 export const SearchBox: FunctionComponent<SearchBoxProps> = (props) => {
   const {controller} = props;
   const [state, setState] = useState(controller.state);
-  const isEnterKey = (e: React.KeyboardEvent<HTMLInputElement>) => e.key === 'Enter';
 
-  useEffect(() => controller.subscribe(() => setState(controller.state)), [controller]);
+  useEffect(() => controller.subscribe(() => setState(controller.state)), [
+    controller,
+  ]);
 
   const suggestionStyle = {
     cursor: 'pointer',
-  }
+  };
 
   return (
     <div className="search-box">
       <input
         value={state.value}
         onChange={(e) => controller.updateText(e.target.value)}
-        onKeyDown={(e) => isEnterKey(e) && controller.submit()}
+        onKeyDown={(e) => e.key === 'Enter' && controller.submit()}
       />
       <ul>
         {state.suggestions.map((suggestion) => {
@@ -30,11 +31,11 @@ export const SearchBox: FunctionComponent<SearchBoxProps> = (props) => {
               style={suggestionStyle}
               key={suggestion.rawValue}
               onClick={() => controller.selectSuggestion(suggestion.rawValue)}
-              dangerouslySetInnerHTML={{__html: suggestion.highlightedValue}}>
-            </li>
+              dangerouslySetInnerHTML={{__html: suggestion.highlightedValue}}
+            ></li>
           );
         })}
       </ul>
     </div>
   );
-}
+};
