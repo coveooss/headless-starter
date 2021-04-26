@@ -4,7 +4,6 @@ import {
   buildResultTemplatesManager,
   ResultTemplatesHelpers,
 } from '@coveo/headless';
-import React from 'react';
 import {InteractiveResult} from '../components/interactive-result';
 import {headlessEngine} from '../engine';
 

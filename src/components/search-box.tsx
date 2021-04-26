@@ -8,6 +8,7 @@ interface SearchBoxProps {
 export const SearchBox: FunctionComponent<SearchBoxProps> = (props) => {
   const {controller} = props;
   const [state, setState] = useState(controller.state);
+  const [focused, setFocused] = useState(false);
 
   useEffect(() => controller.subscribe(() => setState(controller.state)), [
     controller,
@@ -22,20 +23,34 @@ export const SearchBox: FunctionComponent<SearchBoxProps> = (props) => {
       <input
         value={state.value}
         onChange={(e) => controller.updateText(e.target.value)}
-        onKeyDown={(e) => e.key === 'Enter' && controller.submit()}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            controller.submit();
+          } else if (e.key === 'Escape') {
+            controller.clear();
+            (e.target as HTMLInputElement).blur();
+          }
+        }}
+        onFocus={() => setFocused(true)}
+        onBlur={() => setFocused(false)}
       />
-      <ul>
-        {state.suggestions.map((suggestion) => {
-          return (
-            <li
-              style={suggestionStyle}
-              key={suggestion.rawValue}
-              onClick={() => controller.selectSuggestion(suggestion.rawValue)}
-              dangerouslySetInnerHTML={{__html: suggestion.highlightedValue}}
-            ></li>
-          );
-        })}
-      </ul>
+      <button onClick={() => controller.submit()}>Search</button>
+      <button onClick={() => controller.clear()}>Clear</button>
+      {focused && state.suggestions.length > 0 && (
+        <ul>
+          {state.suggestions.map((suggestion) => {
+            return (
+              <li
+                style={suggestionStyle}
+                key={suggestion.rawValue}
+                onMouseDown={(e) => e.preventDefault()}
+                onClick={() => controller.selectSuggestion(suggestion.rawValue)}
+                dangerouslySetInnerHTML={{__html: suggestion.highlightedValue}}
+              ></li>
+            );
+          })}
+        </ul>
+      )}
     </div>
   );
 };
