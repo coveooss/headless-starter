@@ -50,6 +50,11 @@ export const Facet: FunctionComponent<FacetProps> = (props) => {
       {state.canShowLessValues && (
         <button onClick={() => controller.showLessValues()}>Show Less</button>
       )}
+      <p>&nbsp;Sort by:&nbsp;</p>
+      <button onClick={() => controller.sortBy('alphanumeric')}>A-z</button>
+      <button onClick={() => controller.sortBy('automatic')}>Auto</button>
+      <button onClick={() => controller.sortBy('occurrences')}>Number</button>
+      <button onClick={() => controller.sortBy('score')}>Score</button>
     </div>
   );
 };
