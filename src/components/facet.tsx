@@ -1,4 +1,4 @@
-import {Facet as HeadlessFacet} from '@coveo/headless';
+import {Facet as HeadlessFacet, FacetSortCriterion} from '@coveo/headless';
 import {FunctionComponent, useEffect, useState} from 'react';
 import {FacetSearch} from './facet-search';
 
@@ -14,6 +14,10 @@ export const Facet: FunctionComponent<FacetProps> = (props) => {
   useEffect(() => controller.subscribe(() => setState(controller.state)), [
     controller,
   ]);
+
+  const sortBy = (sortCriterion: FacetSortCriterion) => {
+    controller.sortBy(sortCriterion);
+  };
 
   if (!state.values.length) {
     return (
@@ -51,10 +55,15 @@ export const Facet: FunctionComponent<FacetProps> = (props) => {
         <button onClick={() => controller.showLessValues()}>Show Less</button>
       )}
       <p>&nbsp;Sort by:&nbsp;</p>
-      <button onClick={() => controller.sortBy('alphanumeric')}>A-z</button>
-      <button onClick={() => controller.sortBy('automatic')}>Auto</button>
-      <button onClick={() => controller.sortBy('occurrences')}>Number</button>
-      <button onClick={() => controller.sortBy('score')}>Score</button>
+      <select
+        name="SortBy"
+        id="FacetSort"
+        onChange={(e) => sortBy(e.currentTarget.value as FacetSortCriterion)}
+      >
+        <option value="score">Score</option>
+        <option value="alphanumeric">Alphanumeric</option>
+        <option value="occurrences">Number</option>
+      </select>
     </div>
   );
 };
