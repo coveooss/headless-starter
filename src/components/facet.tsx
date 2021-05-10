@@ -58,6 +58,7 @@ export const Facet: FunctionComponent<FacetProps> = (props) => {
       <select
         name="SortBy"
         id="FacetSort"
+        defaultValue="score"
         onChange={(e) => sortBy(e.currentTarget.value as FacetSortCriterion)}
       >
         <option value="score">Score</option>
