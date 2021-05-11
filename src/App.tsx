@@ -1,12 +1,7 @@
-import React, {useEffect} from 'react';
+import {useEffect} from 'react';
 import './App.css';
 import {SearchBox} from './components/search-box';
-import {
-  AnalyticsActions,
-  SearchActions,
-  buildDateFacet,
-  buildDateRange,
-} from '@coveo/headless';
+import {AnalyticsActions, SearchActions, buildDateFacet} from '@coveo/headless';
 import {headlessEngine} from './engine';
 import {ResultList} from './components/result-list';
 import {Facet} from './components/facet';
@@ -33,21 +28,7 @@ function App() {
   const controller = buildDateFacet(headlessEngine, {
     options: {
       field: 'date',
-      generateAutomaticRanges: false,
-      currentValues: [
-        buildDateRange({
-          start: new Date(2015, 1),
-          end: new Date(2018, 1),
-        }),
-        buildDateRange({
-          start: new Date(2018, 1),
-          end: new Date(2020, 1),
-        }),
-        buildDateRange({
-          start: new Date(2020, 1),
-          end: new Date(2021, 1),
-        }),
-      ],
+      generateAutomaticRanges: true,
     },
   });
 
