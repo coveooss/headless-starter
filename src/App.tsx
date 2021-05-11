@@ -1,10 +1,16 @@
 import React, {useEffect} from 'react';
 import './App.css';
 import {SearchBox} from './components/search-box';
-import {AnalyticsActions, SearchActions} from '@coveo/headless';
+import {
+  AnalyticsActions,
+  SearchActions,
+  buildDateFacet,
+  buildDateRange,
+} from '@coveo/headless';
 import {headlessEngine} from './engine';
 import {ResultList} from './components/result-list';
 import {Facet} from './components/facet';
+import {DateFacet} from './components/date-facet';
 import {Pager} from './components/pager';
 import {Sort} from './components/sort';
 import {
@@ -24,6 +30,27 @@ function App() {
     );
   });
 
+  const controller = buildDateFacet(headlessEngine, {
+    options: {
+      field: 'date',
+      generateAutomaticRanges: false,
+      currentValues: [
+        buildDateRange({
+          start: new Date(2015, 1),
+          end: new Date(2018, 1),
+        }),
+        buildDateRange({
+          start: new Date(2018, 1),
+          end: new Date(2020, 1),
+        }),
+        buildDateRange({
+          start: new Date(2020, 1),
+          end: new Date(2021, 1),
+        }),
+      ],
+    },
+  });
+
   return (
     <div className="App">
       <header className="App-header">
@@ -36,6 +63,7 @@ function App() {
         <div className="main-section">
           <div className="facet-section column">
             <Facet controller={facet} title="Source" />
+            <DateFacet controller={controller} title="Date" />;
           </div>
           <div className="results-section column">
             <Sort controller={sort} criteria={criteria} />
