@@ -25,7 +25,7 @@ function App() {
     );
   });
 
-  const controller = buildDateFacet(headlessEngine, {
+  const dateFacet = buildDateFacet(headlessEngine, {
     options: {
       field: 'date',
       generateAutomaticRanges: true,
@@ -44,7 +44,7 @@ function App() {
         <div className="main-section">
           <div className="facet-section column">
             <Facet controller={facet} title="Source" />
-            <DateFacet controller={controller} title="Date" />;
+            <DateFacet controller={dateFacet} title="Date" />;
           </div>
           <div className="results-section column">
             <Sort controller={sort} criteria={criteria} />
