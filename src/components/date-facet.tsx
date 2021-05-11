@@ -1,6 +1,6 @@
 import {DateFacet as HeadlessDateFacet, DateFacetValue} from '@coveo/headless';
 import {FunctionComponent, useEffect, useState} from 'react';
-import {parseDate} from '../utils/date-utils';
+import dayjs from 'dayjs';
 
 interface DateFacetProps {
   controller: HeadlessDateFacet;
@@ -12,6 +12,10 @@ export const DateFacet: FunctionComponent<DateFacetProps> = (props) => {
   const [state, setState] = useState(controller.state);
 
   useEffect(() => controller.subscribe(() => setState(controller.state)), []);
+
+  const parseDate = (date: string) => {
+    return dayjs(date, 'YYYY/MM/DD@HH:mm:ss');
+  };
 
   const getKeyForRange = (value: DateFacetValue) => {
     return `[${value.start}..${value.end}${value.endInclusive ? ']' : '['}`;
