@@ -13,13 +13,13 @@ export const DateFacet: FunctionComponent<DateFacetProps> = (props) => {
 
   useEffect(() => controller.subscribe(() => setState(controller.state)), []);
 
-  function getKeyForRange(value: DateFacetValue) {
+  const getKeyForRange = (value: DateFacetValue) => {
     return `[${value.start}..${value.end}${value.endInclusive ? ']' : '['}`;
-  }
+  };
 
-  function format(dateStr: string) {
+  const format = (dateStr: string) => {
     return parseDate(dateStr).format('MMMM D YYYY');
-  }
+  };
 
   if (!state.values.length) {
     return (
