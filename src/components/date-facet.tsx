@@ -17,12 +17,12 @@ export const DateFacet: FunctionComponent<DateFacetProps> = (props) => {
     return dayjs(date, 'YYYY/MM/DD@HH:mm:ss');
   };
 
-  const getKeyForRange = (value: DateFacetValue) => {
-    return `[${value.start}..${value.end}${value.endInclusive ? ']' : '['}`;
-  };
-
   const format = (dateStr: string) => {
     return parseDate(dateStr).format('MMMM D YYYY');
+  };
+
+  const getKeyForRange = (value: DateFacetValue) => {
+    return `[${value.start}..${value.end}${value.endInclusive ? ']' : '['}`;
   };
 
   if (!state.values.length) {
