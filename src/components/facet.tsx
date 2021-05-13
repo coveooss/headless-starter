@@ -36,7 +36,6 @@ export const Facet: FunctionComponent<FacetProps> = (props) => {
           <li key={value.value}>
             <input
               type="checkbox"
-              defaultValue="score"
               checked={controller.isValueSelected(value)}
               onChange={() => controller.toggleSelect(value)}
               disabled={state.isLoading}
@@ -53,10 +52,10 @@ export const Facet: FunctionComponent<FacetProps> = (props) => {
       )}
       <p>&nbsp;Sort by:&nbsp;</p>
       <select
-        defaultValue="score"
         onChange={(e) =>
           controller.sortBy(e.currentTarget.value as FacetSortCriterion)
         }
+        defaultValue="score"
       >
         <option value="score">Score</option>
         <option value="alphanumeric">Label</option>

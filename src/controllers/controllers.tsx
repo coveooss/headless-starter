@@ -26,7 +26,9 @@ export const searchBox = buildSearchBox(headlessEngine, {
 
 export const resultList = buildResultList(headlessEngine);
 
-export const facet = buildFacet(headlessEngine, {options: {field: 'source'}});
+export const facet = buildFacet(headlessEngine, {
+  options: {field: 'source', sortCriteria: 'score'},
+});
 
 export const dateFacet = buildDateFacet(headlessEngine, {
   options: {
