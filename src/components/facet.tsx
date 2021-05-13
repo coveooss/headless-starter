@@ -15,10 +15,6 @@ export const Facet: FunctionComponent<FacetProps> = (props) => {
     controller,
   ]);
 
-  const sortBy = (sortCriterion: FacetSortCriterion) => {
-    controller.sortBy(sortCriterion);
-  };
-
   if (!state.values.length) {
     return (
       <div className="facet">
@@ -40,6 +36,7 @@ export const Facet: FunctionComponent<FacetProps> = (props) => {
           <li key={value.value}>
             <input
               type="checkbox"
+              defaultValue="score"
               checked={controller.isValueSelected(value)}
               onChange={() => controller.toggleSelect(value)}
               disabled={state.isLoading}
@@ -56,14 +53,14 @@ export const Facet: FunctionComponent<FacetProps> = (props) => {
       )}
       <p>&nbsp;Sort by:&nbsp;</p>
       <select
-        name="SortBy"
-        id="FacetSort"
         defaultValue="score"
-        onChange={(e) => sortBy(e.currentTarget.value as FacetSortCriterion)}
+        onChange={(e) =>
+          controller.sortBy(e.currentTarget.value as FacetSortCriterion)
+        }
       >
         <option value="score">Score</option>
-        <option value="alphanumeric">Alphanumeric</option>
-        <option value="occurrences">Number</option>
+        <option value="alphanumeric">Label</option>
+        <option value="occurrences">Occurrences</option>
       </select>
     </div>
   );

@@ -13,12 +13,8 @@ export const DateFacet: FunctionComponent<DateFacetProps> = (props) => {
 
   useEffect(() => controller.subscribe(() => setState(controller.state)), []);
 
-  const parseDate = (date: string) => {
-    return dayjs(date, 'YYYY/MM/DD@HH:mm:ss');
-  };
-
   const format = (dateStr: string) => {
-    return parseDate(dateStr).format('MMMM D YYYY');
+    return dayjs(dateStr, 'YYYY/MM/DD@HH:mm:ss').format('MMMM D YYYY');
   };
 
   const getKeyForRange = (value: DateFacetValue) => {

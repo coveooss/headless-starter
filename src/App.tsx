@@ -1,7 +1,7 @@
 import {useEffect} from 'react';
 import './App.css';
 import {SearchBox} from './components/search-box';
-import {AnalyticsActions, SearchActions, buildDateFacet} from '@coveo/headless';
+import {AnalyticsActions, SearchActions} from '@coveo/headless';
 import {headlessEngine} from './engine';
 import {ResultList} from './components/result-list';
 import {Facet} from './components/facet';
@@ -10,6 +10,7 @@ import {Pager} from './components/pager';
 import {Sort} from './components/sort';
 import {
   facet,
+  dateFacet,
   pager,
   resultList,
   searchBox,
@@ -23,13 +24,6 @@ function App() {
     headlessEngine.dispatch(
       SearchActions.executeSearch(AnalyticsActions.logInterfaceLoad())
     );
-  });
-
-  const dateFacet = buildDateFacet(headlessEngine, {
-    options: {
-      field: 'date',
-      generateAutomaticRanges: true,
-    },
   });
 
   return (
