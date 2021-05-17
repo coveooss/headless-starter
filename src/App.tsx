@@ -1,14 +1,16 @@
-import React, {useEffect} from 'react';
+import {useEffect} from 'react';
 import './App.css';
 import {SearchBox} from './components/search-box';
 import {AnalyticsActions, SearchActions} from '@coveo/headless';
 import {headlessEngine} from './engine';
 import {ResultList} from './components/result-list';
 import {Facet} from './components/facet';
+import {DateFacet} from './components/date-facet';
 import {Pager} from './components/pager';
 import {Sort} from './components/sort';
 import {
   facet,
+  dateFacet,
   pager,
   resultList,
   searchBox,
@@ -36,6 +38,7 @@ function App() {
         <div className="main-section">
           <div className="facet-section column">
             <Facet controller={facet} title="Source" />
+            <DateFacet controller={dateFacet} title="Date" />
           </div>
           <div className="results-section column">
             <Sort controller={sort} criteria={criteria} />
