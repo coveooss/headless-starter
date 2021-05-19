@@ -34,7 +34,7 @@ export const FacetSearch: FunctionComponent<FacetSearchProps> = (props) => {
               <button
                 onClick={() => {
                   props.controller.select(facetSearchValue);
-                  updateSearch('');
+                  props.controller.clear();
                 }}
               >
                 {facetSearchValue.displayValue} ({facetSearchValue.count})
