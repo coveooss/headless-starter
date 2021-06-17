@@ -1,7 +1,7 @@
 import {useEffect} from 'react';
 import './App.css';
 import {SearchBox} from './components/search-box';
-import {AnalyticsActions, SearchActions} from '@coveo/headless';
+import {loadSearchAnalyticsActions, loadSearchActions} from '@coveo/headless';
 import {headlessEngine} from './engine';
 import {ResultList} from './components/result-list';
 import {Facet} from './components/facet';
@@ -21,9 +21,9 @@ import {resultTemplatesManager} from './controllers/result-templates-manager';
 
 function App() {
   useEffect(() => {
-    headlessEngine.dispatch(
-      SearchActions.executeSearch(AnalyticsActions.logInterfaceLoad())
-    );
+    const {logInterfaceLoad} = loadSearchAnalyticsActions(headlessEngine);
+    const {executeSearch} = loadSearchActions(headlessEngine);
+    headlessEngine.dispatch(executeSearch(logInterfaceLoad()));
   });
 
   return (
