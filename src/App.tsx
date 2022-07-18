@@ -13,8 +13,12 @@ import {
   resultList,
   searchBox,
   sort,
+  querySummary,
+  resultsPerPage,
 } from './controllers/controllers';
 import {criteria} from './controllers/sort-criteria';
+import {QuerySummary} from './components/query-summary';
+import {ResultsPerPage} from './components/results-per-page';
 
 function App() {
   useEffect(() => {
@@ -32,14 +36,19 @@ function App() {
         <div className="search-section">
           <SearchBox controller={searchBox} />
         </div>
+
         <div className="main-section">
           <div className="facet-section column">
             <Facet controller={facet} title="Source" />
           </div>
           <div className="results-section column">
+            <div className="query-section">
+              <QuerySummary controller={querySummary} />
+            </div>
             <Sort controller={sort} criteria={criteria} />
             <ResultList controller={resultList} />
             <Pager controller={pager} />
+            <ResultsPerPage controller={resultsPerPage} />
           </div>
         </div>
       </div>

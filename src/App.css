@@ -25,6 +25,11 @@
 
 .facet ul {
   text-align: left;
+  padding-left: 10px;
+}
+
+.facet li{
+  list-style: none;
 }
 
 .sort {
@@ -37,4 +42,16 @@
 
 .search-box input {
   min-width: 100%;
+}
+
+.query-section{
+  padding-bottom: 20px;
+}
+
+.result-list ul{
+  padding-left: 10px;
+}
+
+.result-list li{
+  list-style: none;
 }
