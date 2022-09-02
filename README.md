@@ -1,6 +1,6 @@
 # Coveo Headless React Starter Project
 
-This project serves as a starting point for the Coveo Headless Tutorial.
+This project serves as a starting point for the [Coveo Headless Tutorial](https://levelup.coveo.com/learn/courses/headless-tutorial).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
