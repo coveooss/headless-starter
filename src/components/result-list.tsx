@@ -10,9 +10,10 @@ export const ResultList: FunctionComponent<ResultListProps> = (props) => {
   const {controller} = props;
   const [state, setState] = useState(controller.state);
 
-  useEffect(() => controller.subscribe(() => setState(controller.state)), [
-    controller,
-  ]);
+  useEffect(
+    () => controller.subscribe(() => setState(controller.state)),
+    [controller]
+  );
 
   if (!state.results.length) {
     return <div>No results</div>;
