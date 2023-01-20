@@ -10,9 +10,10 @@ export const SearchBox: FunctionComponent<SearchBoxProps> = (props) => {
   const [state, setState] = useState(controller.state);
   const [focused, setFocused] = useState(false);
 
-  useEffect(() => controller.subscribe(() => setState(controller.state)), [
-    controller,
-  ]);
+  useEffect(
+    () => controller.subscribe(() => setState(controller.state)),
+    [controller]
+  );
 
   const suggestionStyle = {
     cursor: 'pointer',

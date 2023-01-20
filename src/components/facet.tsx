@@ -11,9 +11,10 @@ export const Facet: FunctionComponent<FacetProps> = (props) => {
   const {controller} = props;
   const [state, setState] = useState(controller.state);
 
-  useEffect(() => controller.subscribe(() => setState(controller.state)), [
-    controller,
-  ]);
+  useEffect(
+    () => controller.subscribe(() => setState(controller.state)),
+    [controller]
+  );
 
   if (!state.values.length) {
     return (

@@ -14,9 +14,10 @@ export const Sort: FunctionComponent<SortProps> = (props) => {
   const {controller} = props;
   const [state, setState] = useState(controller.state);
 
-  useEffect(() => controller.subscribe(() => setState(controller.state)), [
-    controller,
-  ]);
+  useEffect(
+    () => controller.subscribe(() => setState(controller.state)),
+    [controller]
+  );
 
   const getCriterionFromName = (name: string) =>
     props.criteria.find(([criterionName]) => criterionName === name)!;
